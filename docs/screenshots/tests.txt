@@ -1,0 +1,21 @@
+$ python -m pytest -q
+........................................................................ [ 46%]
+.................ss..................................................... [ 92%]
+............                                                             [100%]
+154 passed, 2 skipped in 22.11s
+
+$ python -m cron_agent eval --set eval/heldout.jsonl
+# Evaluation: rules
+
+Run 2026-10-22T22:57:33
+
+- Fully correct: **18/20 (90%)**
+- Schedule correct on scheduling prompts: 14/15
+- Median planning time: 0.0 s (95th percentile 0.001 s)
+
+$ python -m cron_agent bench --reps 10
+
+- Server start + MCP handshake: 1.199 s (once per session)
+- Request → installed and verified: median 0.0193 s, 95th percentile 0.029 s
+- of which planning: median 0.0002 s; MCP tool calls (lookup, dry run, write, verify): median 0.0191 s
+

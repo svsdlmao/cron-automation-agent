@@ -1,0 +1,59 @@
+{"id": 1, "cat": "basic", "prompt": "run ~/scripts/db_backup.sh every Friday at midnight", "expect": {"kind": "add", "schedules": ["0 0 * * 5"], "command": "~/scripts/db_backup.sh"}}
+{"id": 2, "cat": "basic", "prompt": "Run my database backup script every Friday at midnight.", "expect": {"kind": "add", "schedules": ["0 0 * * 5"], "query": "database backup"}}
+{"id": 3, "cat": "interval", "prompt": "every 15 minutes run ~/bin/health_check.sh", "expect": {"kind": "add", "schedules": ["*/15 * * * *"], "command": "health_check.sh"}}
+{"id": 4, "cat": "interval", "prompt": "every minute run /opt/ping.sh", "expect": {"kind": "add", "schedules": ["* * * * *"], "command": "/opt/ping.sh"}}
+{"id": 5, "cat": "interval", "prompt": "every 5 minutes run `curl -fsS https://example.com/health`", "expect": {"kind": "add", "schedules": ["*/5 * * * *"], "command": "curl -fsS https://example.com/health"}}
+{"id": 6, "cat": "interval", "prompt": "every half hour run ~/bin/sync.sh", "expect": {"kind": "add", "schedules": ["*/30 * * * *"], "command": "sync.sh"}}
+{"id": 7, "cat": "interval", "prompt": "every hour run ~/bin/rotate.sh", "expect": {"kind": "add", "schedules": ["0 * * * *"], "command": "rotate.sh"}}
+{"id": 8, "cat": "interval", "prompt": "hourly at 15 minutes past run ~/bin/rotate.sh", "expect": {"kind": "add", "schedules": ["15 * * * *"], "command": "rotate.sh"}}
+{"id": 9, "cat": "interval", "prompt": "every 2 hours run ~/bin/fetch.sh", "expect": {"kind": "add", "schedules": ["0 */2 * * *"], "command": "fetch.sh"}}
+{"id": 10, "cat": "interval", "prompt": "every 6 hours run ~/bin/fetch.sh", "expect": {"kind": "add", "schedules": ["0 */6 * * *"], "command": "fetch.sh"}}
+{"id": 11, "cat": "daily", "prompt": "every day at 9am run ~/scripts/report.py", "expect": {"kind": "add", "schedules": ["0 9 * * *"], "command": "report.py"}}
+{"id": 12, "cat": "daily", "prompt": "daily at 14:30 run ~/scripts/report.py", "expect": {"kind": "add", "schedules": ["30 14 * * *"], "command": "report.py"}}
+{"id": 13, "cat": "daily", "prompt": "every day at 6:45 pm run ~/scripts/report.py", "expect": {"kind": "add", "schedules": ["45 18 * * *"], "command": "report.py"}}
+{"id": 14, "cat": "daily", "prompt": "every night at 11pm run ~/scripts/cleanup_tmp.sh", "expect": {"kind": "add", "schedules": ["0 23 * * *"], "command": "cleanup_tmp.sh"}}
+{"id": 15, "cat": "daily", "prompt": "every day at noon run ~/scripts/lunch.sh", "expect": {"kind": "add", "schedules": ["0 12 * * *"], "command": "lunch.sh"}}
+{"id": 16, "cat": "daily", "prompt": "every day at 9am and 5pm run ~/bin/check.sh", "expect": {"kind": "add", "schedules": ["0 9,17 * * *"], "command": "check.sh"}}
+{"id": 17, "cat": "daily", "prompt": "every day at 8:30am and 6pm run ~/bin/check.sh", "expect": {"kind": "add", "schedules": ["30 8 * * *", "0 18 * * *"], "command": "check.sh"}}
+{"id": 18, "cat": "weekly", "prompt": "every weekday at 9:30 am run ~/bin/standup.sh", "expect": {"kind": "add", "schedules": ["30 9 * * 1-5"], "command": "standup.sh"}}
+{"id": 19, "cat": "weekly", "prompt": "monday to friday at 7am run ~/bin/wake.sh", "expect": {"kind": "add", "schedules": ["0 7 * * 1-5"], "command": "wake.sh"}}
+{"id": 20, "cat": "weekly", "prompt": "every weekend at 10am run ~/bin/garden.sh", "expect": {"kind": "add", "schedules": ["0 10 * * 0,6"], "command": "garden.sh"}}
+{"id": 21, "cat": "weekly", "prompt": "every Monday at 8am run ~/bin/plan.sh", "expect": {"kind": "add", "schedules": ["0 8 * * 1"], "command": "plan.sh"}}
+{"id": 22, "cat": "weekly", "prompt": "every Monday and Thursday at 6pm run ~/bin/gym.sh", "expect": {"kind": "add", "schedules": ["0 18 * * 1,4"], "command": "gym.sh"}}
+{"id": 23, "cat": "weekly", "prompt": "on Tuesdays and Fridays at 7:15 run ~/bin/bins.sh", "expect": {"kind": "add", "schedules": ["15 7 * * 2,5"], "command": "bins.sh"}}
+{"id": 24, "cat": "weekly", "prompt": "every Sunday at midnight run ~/scripts/weekly_report.py", "expect": {"kind": "add", "schedules": ["0 0 * * 0"], "command": "weekly_report.py"}}
+{"id": 25, "cat": "window", "prompt": "every 15 minutes during working hours on weekdays run ~/bin/health_check.sh", "expect": {"kind": "add", "schedules": ["*/15 9-16 * * 1-5"], "command": "health_check.sh"}}
+{"id": 26, "cat": "window", "prompt": "every 10 minutes between 8am and 6pm run ~/bin/poll.sh", "expect": {"kind": "add", "schedules": ["*/10 8-17 * * *"], "command": "poll.sh"}}
+{"id": 27, "cat": "window", "prompt": "every 2 hours between 9am and 5pm on weekdays run ~/bin/sync.sh", "expect": {"kind": "add", "schedules": ["0 9-16/2 * * 1-5"], "command": "sync.sh"}}
+{"id": 28, "cat": "monthly", "prompt": "on the 1st of every month at 2am run ~/scripts/invoice.sh", "expect": {"kind": "add", "schedules": ["0 2 1 * *"], "command": "invoice.sh"}}
+{"id": 29, "cat": "monthly", "prompt": "on the 1st and 15th of every month at 9am run ~/scripts/pay.sh", "expect": {"kind": "add", "schedules": ["0 9 1,15 * *"], "command": "pay.sh"}}
+{"id": 30, "cat": "monthly", "prompt": "every month on the 10th at 6:00 run ~/scripts/rent.sh", "expect": {"kind": "add", "schedules": ["0 6 10 * *"], "command": "rent.sh"}}
+{"id": 31, "cat": "monthly", "prompt": "monthly at midnight run ~/scripts/archive.sh", "expect": {"kind": "add", "schedules": ["0 0 1 * *"], "command": "archive.sh"}}
+{"id": 32, "cat": "yearly", "prompt": "every year on 1 january at midnight run ~/bin/newyear.sh", "expect": {"kind": "add", "schedules": ["0 0 1 1 *"], "command": "newyear.sh"}}
+{"id": 33, "cat": "yearly", "prompt": "every march 15 at 9am run ~/bin/tax.sh", "expect": {"kind": "add", "schedules": ["0 9 15 3 *"], "command": "tax.sh"}}
+{"id": 34, "cat": "yearly", "prompt": "every 3 months on the 1st at 8am run ~/bin/quarterly.sh", "expect": {"kind": "add", "schedules": ["0 8 1 */3 *"], "command": "quarterly.sh"}}
+{"id": 35, "cat": "basic", "prompt": "run `tar czf /backups/home-$(date +%F).tgz ~/data` every day at 2am", "expect": {"kind": "add", "schedules": ["0 2 * * *"], "command": "date +%F"}}
+{"id": 36, "cat": "edge", "prompt": "back up my database on the first Monday of every month at 9am", "expect": {"kind": "add", "schedules": ["0 9 1-7 * *"], "guard": "weekday:1", "query": "database backup"}}
+{"id": 37, "cat": "edge", "prompt": "on the last day of the month at 23:00 run ~/scripts/close_books.sh", "expect": {"kind": "add", "schedules": ["0 23 28-31 * *"], "guard": "last-day", "command": "close_books.sh"}}
+{"id": 38, "cat": "edge", "prompt": "on the last Friday of the month at 5pm run ~/scripts/payroll.sh", "expect": {"kind": "add", "schedules": ["0 17 * * 5"], "guard": "last-weekday", "command": "payroll.sh"}}
+{"id": 39, "cat": "edge", "prompt": "every 90 minutes run ~/bin/sync.sh", "expect": {"kind": "add", "schedules": ["0 0-21/3 * * *", "30 1-22/3 * * *"], "command": "sync.sh"}}
+{"id": 40, "cat": "basic", "prompt": "run 0 0 * * 5 ~/scripts/db_backup.sh", "expect": {"kind": "add", "schedules": ["0 0 * * 5"], "command": "db_backup.sh"}}
+{"id": 41, "cat": "edge", "prompt": "every 45 minutes run ~/bin/poll.sh", "expect": {"kind": "add", "schedules": ["*/45 * * * *"], "command": "poll.sh"}}
+{"id": 42, "cat": "ask", "prompt": "every day run ~/bin/x.sh", "expect": {"kind": "ask"}}
+{"id": 43, "cat": "ask", "prompt": "every Friday run ~/bin/x.sh", "expect": {"kind": "ask"}}
+{"id": 44, "cat": "ask", "prompt": "run my backup", "expect": {"kind": "ask"}}
+{"id": 45, "cat": "ask", "prompt": "every friday at 9am", "expect": {"kind": "ask"}}
+{"id": 46, "cat": "ask", "prompt": "every 30 seconds run ~/bin/x.sh", "expect": {"kind": "ask"}}
+{"id": 47, "cat": "ask", "prompt": "every other week on monday at 9am run ~/bin/x.sh", "expect": {"kind": "ask"}}
+{"id": 48, "cat": "ask", "prompt": "every 100 minutes run ~/bin/x.sh", "expect": {"kind": "ask"}}
+{"id": 49, "cat": "one-off", "prompt": "in 10 minutes run ~/bin/x.sh", "expect": {"kind": "reply"}}
+{"id": 50, "cat": "one-off", "prompt": "tomorrow at 9am run ~/bin/x.sh", "expect": {"kind": "reply"}}
+{"id": 51, "cat": "intent", "prompt": "what's scheduled?", "expect": {"kind": "tool", "tool": "list_jobs"}}
+{"id": 52, "cat": "intent", "prompt": "show my jobs", "expect": {"kind": "tool", "tool": "list_jobs"}}
+{"id": 53, "cat": "intent", "prompt": "is cron running?", "expect": {"kind": "tool", "tool": "cron_status"}}
+{"id": 54, "cat": "intent", "prompt": "did the backup run?", "expect": {"kind": "tool", "tool": "read_job_log"}}
+{"id": 55, "cat": "intent", "prompt": "remove job a1f3", "expect": {"kind": "tool", "tool": "remove_job"}}
+{"id": 56, "cat": "intent", "prompt": "stop the backup job", "expect": {"kind": "tool", "tool": "remove_job"}}
+{"id": 57, "cat": "intent", "prompt": "undo that", "expect": {"kind": "tool", "tool": "rollback"}}
+{"id": 58, "cat": "intent", "prompt": "explain */15 9-16 * * 1-5", "expect": {"kind": "tool", "tool": "preview_schedule"}}
+{"id": 59, "cat": "intent", "prompt": "when does 0 0 * * 5 run?", "expect": {"kind": "tool", "tool": "preview_schedule"}}

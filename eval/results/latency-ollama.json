@@ -1,0 +1,118 @@
+{
+  "provider": "ollama",
+  "backend": "file",
+  "runs": 15,
+  "installed": 13,
+  "server_startup_s": 1.137,
+  "total_median_s": 1.9552,
+  "total_p95_s": 2.4741,
+  "planning_median_s": 1.919,
+  "tools_median_s": 0.0403,
+  "samples": [
+    {
+      "request": "run ~/scripts/db_backup.sh every Friday at midnight",
+      "total_s": 2.3706128001213074,
+      "planning_s": 2.3005609000101686,
+      "tools_s": 0.07005190011113882,
+      "installed": true
+    },
+    {
+      "request": "Run my database backup script every Friday at midnight.",
+      "total_s": 2.22781730000861,
+      "planning_s": 2.184035199927166,
+      "tools_s": 0.04378210008144379,
+      "installed": true
+    },
+    {
+      "request": "every 15 minutes during working hours on weekdays run `echo ok >> /tmp/health.log`",
+      "total_s": 0.9116545000579208,
+      "planning_s": 0.9045709997881204,
+      "tools_s": 0.007083500269800425,
+      "installed": false
+    },
+    {
+      "request": "back up my database on the first Monday of every month at 9am",
+      "total_s": 3.6921560000628233,
+      "planning_s": 3.6479392000474036,
+      "tools_s": 0.04421680001541972,
+      "installed": true
+    },
+    {
+      "request": "every day at 9:30pm run ~/bin/report.sh",
+      "total_s": 1.96284079994075,
+      "planning_s": 1.9222963000647724,
+      "tools_s": 0.040544499875977635,
+      "installed": true
+    },
+    {
+      "request": "run ~/scripts/db_backup.sh every Friday at midnight",
+      "total_s": 1.0311984000727534,
+      "planning_s": 0.984439600026235,
+      "tools_s": 0.046758800046518445,
+      "installed": true
+    },
+    {
+      "request": "Run my database backup script every Friday at midnight.",
+      "total_s": 0.9976218000520021,
+      "planning_s": 0.9620648000854999,
+      "tools_s": 0.03555699996650219,
+      "installed": true
+    },
+    {
+      "request": "every 15 minutes during working hours on weekdays run `echo ok >> /tmp/health.log`",
+      "total_s": 2.465803900035098,
+      "planning_s": 2.435538599966094,
+      "tools_s": 0.030265300069004297,
+      "installed": true
+    },
+    {
+      "request": "back up my database on the first Monday of every month at 9am",
+      "total_s": 0.9607053999789059,
+      "planning_s": 0.9235897001344711,
+      "tools_s": 0.03711569984443486,
+      "installed": true
+    },
+    {
+      "request": "every day at 9:30pm run ~/bin/report.sh",
+      "total_s": 1.9724179999902844,
+      "planning_s": 1.935118000023067,
+      "tools_s": 0.037299999967217445,
+      "installed": true
+    },
+    {
+      "request": "run ~/scripts/db_backup.sh every Friday at midnight",
+      "total_s": 1.048330099787563,
+      "planning_s": 1.0080413001123816,
+      "tools_s": 0.04028879967518151,
+      "installed": true
+    },
+    {
+      "request": "Run my database backup script every Friday at midnight.",
+      "total_s": 1.9552141001913697,
+      "planning_s": 1.9190083998255432,
+      "tools_s": 0.03620570036582649,
+      "installed": true
+    },
+    {
+      "request": "every 15 minutes during working hours on weekdays run `echo ok >> /tmp/health.log`",
+      "total_s": 2.474089200142771,
+      "planning_s": 2.433769900118932,
+      "tools_s": 0.04031930002383888,
+      "installed": true
+    },
+    {
+      "request": "back up my database on the first Monday of every month at 9am",
+      "total_s": 0.9410741999745369,
+      "planning_s": 0.9264034000225365,
+      "tools_s": 0.01467079995200038,
+      "installed": false
+    },
+    {
+      "request": "every day at 9:30pm run ~/bin/report.sh",
+      "total_s": 1.8893903999123722,
+      "planning_s": 1.8477467999327928,
+      "tools_s": 0.04164359997957945,
+      "installed": true
+    }
+  ]
+}

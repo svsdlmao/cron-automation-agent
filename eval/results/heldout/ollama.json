@@ -1,0 +1,551 @@
+{
+  "recovery": {
+    "invalid_first_answers": 6,
+    "recovered_by_retry": 1,
+    "recovered_by_rules": 5,
+    "correct_after_recovery": 4,
+    "error_kinds": {
+      "invalid cron syntax": 4,
+      "missing argument": 2
+    }
+  },
+  "end_to_end_correct": 11,
+  "p95_latency_s": 2.06,
+  "provider": "ollama",
+  "model": "llama3.2",
+  "cases": 20,
+  "correct": 7,
+  "schedule_correct": 3,
+  "schedule_cases": 15,
+  "median_latency_s": 0.971,
+  "by_category": {
+    "ask": [
+      1,
+      2
+    ],
+    "basic": [
+      1,
+      2
+    ],
+    "daily": [
+      1,
+      1
+    ],
+    "edge": [
+      0,
+      2
+    ],
+    "intent": [
+      2,
+      2
+    ],
+    "interval": [
+      1,
+      3
+    ],
+    "monthly": [
+      0,
+      2
+    ],
+    "one-off": [
+      1,
+      1
+    ],
+    "weekly": [
+      0,
+      3
+    ],
+    "window": [
+      0,
+      1
+    ],
+    "yearly": [
+      0,
+      1
+    ]
+  },
+  "results": [
+    {
+      "id": 101,
+      "cat": "basic",
+      "prompt": "Please run /srv/app/export.sh each Saturday at 4 in the afternoon",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 16 * * 6"
+          ],
+          "command": "/srv/app/export.sh",
+          "guard": ""
+        }
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": true,
+      "latency_s": 1.26,
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 102,
+      "cat": "interval",
+      "prompt": "execute ~/bin/ping_api.sh every twenty minutes",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0,20 * * * *"
+          ],
+          "command": "~/bin/ping_api.sh",
+          "guard": ""
+        }
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": false,
+      "latency_s": 0.96,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "schedule ['0,20 * * * *'] != ['*/20 * * * *']"
+    },
+    {
+      "id": 103,
+      "cat": "daily",
+      "prompt": "I want ~/scripts/cleanup_tmp.sh to run daily at 3:15am",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "15 3 * * *"
+          ],
+          "command": "15 3 * * /home/demo/scripts/cleanup_tmp.sh",
+          "guard": ""
+        }
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": true,
+      "latency_s": 1.055,
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 104,
+      "cat": "weekly",
+      "prompt": "Every Wednesday at 10:30 pm, run ~/bin/digest.py",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "30 22 * * 3"
+          ],
+          "guard": "",
+          "command": "~/bin/digest.py"
+        }
+      },
+      "meta": {
+        "attempts": 2,
+        "first_error": "schedule: expected 5 fields (minute hour day month weekday), got 4",
+        "recovered_by": "rules"
+      },
+      "end_to_end_ok": true,
+      "latency_s": 2.06,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "model failed; fell back to rules"
+    },
+    {
+      "id": 105,
+      "cat": "weekly",
+      "prompt": "run ~/bin/standup.sh at 9 on weekdays",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "9 0 * * 5"
+          ],
+          "command": "9 * * * 5 /home/demo/bin/standup.sh",
+          "guard": ""
+        }
+      },
+      "meta": {
+        "attempts": 2,
+        "first_error": "schedule: expected 5 fields (minute hour day month weekday), got 4",
+        "recovered_by": "retry"
+      },
+      "end_to_end_ok": false,
+      "latency_s": 2.066,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "schedule ['9 0 * * 5'] != ['0 9 * * 1-5']"
+    },
+    {
+      "id": 106,
+      "cat": "weekly",
+      "prompt": "Saturdays and Sundays at 8:00, start ~/bin/backup_photos.sh",
+      "got": {
+        "kind": "ask",
+        "tool": null,
+        "args": {}
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": false,
+      "latency_s": 0.915,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "got ask"
+    },
+    {
+      "id": 107,
+      "cat": "window",
+      "prompt": "check ~/bin/queue.sh every 5 minutes from 7am to 7pm",
+      "got": {
+        "kind": "ask",
+        "tool": null,
+        "args": {}
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": false,
+      "latency_s": 0.854,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "got ask"
+    },
+    {
+      "id": 108,
+      "cat": "monthly",
+      "prompt": "on the 5th of each month at 10am run ~/scripts/bills.sh",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 10 5 * *"
+          ],
+          "guard": "",
+          "command": "~/scripts/bills.sh"
+        }
+      },
+      "meta": {
+        "attempts": 2,
+        "first_error": "schedule: Field required",
+        "recovered_by": "rules"
+      },
+      "end_to_end_ok": true,
+      "latency_s": 1.767,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "model failed; fell back to rules"
+    },
+    {
+      "id": 109,
+      "cat": "monthly",
+      "prompt": "run ~/scripts/report.py on the 28th of every month at 18:00",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 18 28 * *"
+          ],
+          "guard": "",
+          "command": "~/scripts/report.py"
+        }
+      },
+      "meta": {
+        "attempts": 2,
+        "first_error": "schedule: expected 5 fields (minute hour day month weekday), got 6",
+        "recovered_by": "rules"
+      },
+      "end_to_end_ok": true,
+      "latency_s": 1.832,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "model failed; fell back to rules"
+    },
+    {
+      "id": 110,
+      "cat": "yearly",
+      "prompt": "every December 25th at 7am run ~/bin/greet.sh",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 7 12 12 5"
+          ],
+          "command": "~/bin/greet.sh",
+          "guard": ""
+        }
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": false,
+      "latency_s": 0.983,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "schedule ['0 7 12 12 5'] != ['0 7 25 12 *']"
+    },
+    {
+      "id": 111,
+      "cat": "interval",
+      "prompt": "run ~/bin/heartbeat.sh once every hour",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 * * * *"
+          ],
+          "command": "~/bin/heartbeat.sh",
+          "guard": ""
+        }
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": true,
+      "latency_s": 0.931,
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 112,
+      "cat": "interval",
+      "prompt": "every 4 hours run `python3 /opt/sync.py --quiet`",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 * * * *"
+          ],
+          "command": "python3 /opt/sync.py --quiet",
+          "guard": ""
+        }
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": false,
+      "latency_s": 0.995,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "schedule ['0 * * * *'] != ['0 */4 * * *']"
+    },
+    {
+      "id": 113,
+      "cat": "edge",
+      "prompt": "on the second Tuesday of every month at 6pm run ~/bin/patch.sh",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 18 8-14 * *"
+          ],
+          "guard": "[ \"$(date +%u)\" = 2 ] && ",
+          "command": "~/bin/patch.sh"
+        }
+      },
+      "meta": {
+        "attempts": 2,
+        "first_error": "schedule: expected 5 fields (minute hour day month weekday), got 4",
+        "recovered_by": "rules"
+      },
+      "end_to_end_ok": true,
+      "latency_s": 1.836,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "model failed; fell back to rules"
+    },
+    {
+      "id": 114,
+      "cat": "edge",
+      "prompt": "clean up temp files on the last day of every month at midnight",
+      "got": {
+        "kind": "ask",
+        "tool": null,
+        "args": {}
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": false,
+      "latency_s": 0.815,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "got ask"
+    },
+    {
+      "id": 115,
+      "cat": "basic",
+      "prompt": "generate the weekly report every Monday at 7:45am",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "45 7 * * 1"
+          ],
+          "guard": "",
+          "command_query": "generate report"
+        }
+      },
+      "meta": {
+        "attempts": 2,
+        "first_error": "command: Field required",
+        "recovered_by": "rules"
+      },
+      "end_to_end_ok": false,
+      "latency_s": 1.797,
+      "ok": false,
+      "schedule_ok": false,
+      "why": "model failed; fell back to rules"
+    },
+    {
+      "id": 116,
+      "cat": "ask",
+      "prompt": "run ~/bin/x.sh every weekday",
+      "got": {
+        "kind": "ask",
+        "tool": null,
+        "args": {}
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": true,
+      "latency_s": 0.889,
+      "ok": true,
+      "schedule_ok": null,
+      "why": ""
+    },
+    {
+      "id": 117,
+      "cat": "ask",
+      "prompt": "back up the database regularly",
+      "got": {
+        "kind": "tool",
+        "tool": "find_script",
+        "args": {
+          "query": "database backup"
+        }
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": false,
+      "latency_s": 0.804,
+      "ok": false,
+      "schedule_ok": null,
+      "why": "got tool find_script"
+    },
+    {
+      "id": 118,
+      "cat": "one-off",
+      "prompt": "run ~/bin/x.sh tonight at 11pm, just once",
+      "got": {
+        "kind": "ask",
+        "tool": null,
+        "args": {}
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": true,
+      "latency_s": 0.83,
+      "ok": true,
+      "schedule_ok": null,
+      "why": ""
+    },
+    {
+      "id": 119,
+      "cat": "intent",
+      "prompt": "list all my cron jobs",
+      "got": {
+        "kind": "tool",
+        "tool": "list_jobs",
+        "args": {}
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": true,
+      "latency_s": 0.747,
+      "ok": true,
+      "schedule_ok": null,
+      "why": ""
+    },
+    {
+      "id": 120,
+      "cat": "intent",
+      "prompt": "delete the cleanup job",
+      "got": {
+        "kind": "tool",
+        "tool": "remove_job",
+        "args": {
+          "ref": {
+            "ids": [
+              "a1f3"
+            ],
+            "words": null
+          }
+        }
+      },
+      "meta": {
+        "attempts": 1,
+        "first_error": null,
+        "recovered_by": null
+      },
+      "end_to_end_ok": true,
+      "latency_s": 0.811,
+      "ok": true,
+      "schedule_ok": null,
+      "why": ""
+    }
+  ],
+  "date": "2026-10-22T22:53:13"
+}

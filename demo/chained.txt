@@ -1,0 +1,14 @@
+Run my database backup script every Friday at midnight.
+y
+every day run ~/bin/report.sh
+9:30pm
+y
+back up my database on the first Monday of every month at 9am
+y
+what's scheduled?
+did the report job run?
+stop the report job
+y
+undo
+y
+exit

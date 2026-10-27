@@ -1,0 +1,61 @@
+cron-agent 1.0.0 · planner: rules · backend: file
+Describe a job in plain English, e.g. “run ~/scripts/db_backup.sh every Friday at midnight”.
+Type help for examples, exit to quit.
+
+cron-agent> Run my database backup script every Friday at midnight.
+Proposed new job f5ae
+  + 0 0 * * 5 { C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-chained/logs/f5ae.log 2>&1 # cron-agent:id=f5ae
+  meaning:   At 00:00, only on Friday
+  next runs: Fri 23 Oct 2026 00:00 · Fri 30 Oct 2026 00:00 · Fri 06 Nov 2026 00:00
+  note:      Using ~/Downloads/db/cron-agent/demo/scripts/db_backup.sh (matched “database backup”).
+Add this job? [y/N] y
+Installed job f5ae. Next run: Fri 23 Oct 2026 00:00. Backup 20261022-224844-545860 saved; say “undo” to revert.
+
+cron-agent> every day run ~/bin/report.sh
+At what time should it run?
+
+cron-agent> 9:30pm
+Proposed new job 4c26
+  + 30 21 * * * { ~/bin/report.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-chained/logs/4c26.log 2>&1 # cron-agent:id=4c26
+  meaning:   At 21:30
+  next runs: Fri 23 Oct 2026 21:30 · Sat 24 Oct 2026 21:30 · Sun 25 Oct 2026 21:30
+Add this job? [y/N] y
+Installed job 4c26. Next run: Fri 23 Oct 2026 21:30. Backup 20261022-224844-588057 saved; say “undo” to revert.
+
+cron-agent> back up my database on the first Monday of every month at 9am
+Proposed new job 7775
+  + 0 9 1-7 * * { [ "$(date +\%u)" = 1 ] && C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-chained/logs/7775.log 2>&1 # cron-agent:id=7775
+  meaning:   At 09:00, between day 1 and 7 of the month, only when the date check passes
+  next runs: Mon 02 Nov 2026 09:00 · Mon 07 Dec 2026 09:00 · Mon 04 Jan 2027 09:00
+  note:      Cron ORs the two day fields, so it runs on days 1-7 and a date check keeps only the Monday.
+  note:      Using ~/Downloads/db/cron-agent/demo/scripts/db_backup.sh (matched “backup database”).
+Add this job? [y/N] y
+Installed job 7775. Next run: Mon 02 Nov 2026 09:00. Backup 20261022-224844-640890 saved; say “undo” to revert.
+
+cron-agent> what's scheduled?
+3 agent job(s):
+  f5ae  0 0 * * 5         C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh
+        At 00:00, only on Friday
+  4c26  30 21 * * *       ~/bin/report.sh
+        At 21:30
+  7775  0 9 1-7 * *       [ "$(date +%u)" = 1 ] && C:/Users/dabas/Downloads/db/cron-agent/demo/scripts/db_backup.sh
+        At 09:00, between day 1 and 7 of the month
+(1 other crontab line(s) left untouched)
+
+cron-agent> did the report job run?
+Job 4c26 has no output yet (it may not have run).
+
+cron-agent> stop the report job
+Proposed removal 4c26
+  - 30 21 * * * { ~/bin/report.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-chained/logs/4c26.log 2>&1 # cron-agent:id=4c26
+Remove this job? [y/N] y
+Removed job 4c26. Backup 20261022-224844-695062 saved; say “undo” to revert.
+
+cron-agent> undo
+Proposed rollback to backup 20261022-224844-695062
+  + 30 21 * * * { ~/bin/report.sh; } >> C:/Users/dabas/AppData/Local/Temp/cron-agent-chained/logs/4c26.log 2>&1 # cron-agent:id=4c26
+Restore this backup? [y/N] y
+Restored backup 20261022-224844-695062.
+
+cron-agent> exit
+bye
