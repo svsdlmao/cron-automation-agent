@@ -1,5 +1,7 @@
 # Cron & Automation Agent
 
+[![tests](https://github.com/svsdlmao/cron-automation-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/svsdlmao/cron-automation-agent/actions/workflows/ci.yml)
+
 Schedule jobs in plain English: the agent translates your request to cron, validates it, shows you
 exactly what will change, and installs it into your own crontab only after you say yes.
 
