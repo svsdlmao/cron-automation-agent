@@ -129,7 +129,7 @@ tests/        pytest suite (file backend by default)
 eval/         prompts.jsonl (59 labelled), heldout.jsonl (20 held-out), results/
 docker/       Dockerfile and the real-cron live check
 demo/         sample scripts and scripted sessions (session, chained, malicious -> *_transcript.txt)
-docs/         DEMO.md, screenshots, and the Review 1–3 slides as one PDF
+docs/         DEMO.md, the project report (PDF), the Review 1–3 slides (PDF), screenshots
 ```
 
 ## Limitations

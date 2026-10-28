@@ -37,7 +37,7 @@ NUM_RE = r"\d+|" + "|".join(sorted(NUMBER_WORDS, key=len, reverse=True))
 
 RECURRING_RE = re.compile(
     r"\b(every|each|daily|weekly|monthly|hourly|yearly|annually|nightly|weekdays?|weekends?|"
-    r"fortnightly|biweekly|(?:mon|tues|wednes|thurs|fri|satur|sun)days)\b")
+    r"fortnightly|biweekly|twice|(?:mon|tues|wednes|thurs|fri|satur|sun)days)\b")
 ONE_OFF_RE = re.compile(
     r"\b(in \d+ (?:minutes?|mins?|hours?|days?)|once|tomorrow|today|tonight|next (?:week|month|"
     r"monday|tuesday|wednesday|thursday|friday|saturday|sunday))\b")
@@ -172,6 +172,12 @@ def parse_times(t: str) -> tuple[TimeSpec, str]:
         spec.times.append(_to_24h(h, minute, m.group(3)))
     t = re.sub(r"\b(at )?(half past|quarter past|quarter to) \d{1,2}(am|pm)?\b", " ", t)
 
+    # "4 in the afternoon" -> 4pm, "7 in the morning" -> 7am
+    t = re.sub(r"\b(\d{1,2})(:\d{2})? in the (afternoon|evening|night)\b",
+               lambda m: f"{m.group(1)}{m.group(2) or ''}pm", t)
+    t = re.sub(r"\b(\d{1,2})(:\d{2})? in the morning\b",
+               lambda m: f"{m.group(1)}{m.group(2) or ''}am", t)
+
     for m in CLOCK_RE.finditer(t):
         if m.group(1):
             spec.times.append(_to_24h(int(m.group(1)), int(m.group(2) or 0), m.group(3)))
@@ -190,13 +196,12 @@ def parse_times(t: str) -> tuple[TimeSpec, str]:
     t = re.sub(r"\bat (\d{1,2})\b(?! ?(?:minutes?|mins?|hours?|st|nd|rd|th))", " ", t)
 
     if not spec.times:
-        for word, value in (("morning", (9, 0)), ("evening", (18, 0)), ("afternoon", (14, 0)),
+        for word, value in (("morning", (9, 0)), ("afternoon", (14, 0)), ("evening", (18, 0)),
                             ("night", (22, 0)), ("nightly", (22, 0)), ("tonight", (22, 0))):
-            if re.search(rf"\b{word}\b", t):
-                spec.times.append(value)
+            if re.search(rf"\b{word}\b", t) and value not in spec.times:
+                spec.times.append(value)   # "every morning and evening" gives both
                 spec.notes.append(f"Assumed {value[0]:02d}:00 for “{word}”. "
                                   "Give a time to change it.")
-                break
     t = re.sub(r"\bat\b", " ", t)
     return spec, t
 
@@ -234,6 +239,10 @@ def parse_schedule(text: str) -> tuple[Schedule, str]:
 
     times, t = parse_times(t)
     notes += times.notes
+    if re.search(r"\btwice (?:a|per|each) day\b|\btwice daily\b", t):
+        if len(times.times) < 2:
+            raise NeedInfo("At which two times? For example “9am and 9pm”.", "time")
+        t = re.sub(r"\btwice (?:a|per|each) day\b|\btwice daily\b", " ", t)
     minute, hour, dom, month, dow = None, None, "*", "*", "*"
     guard = ""
 

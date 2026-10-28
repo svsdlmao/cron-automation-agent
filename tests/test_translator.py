@@ -44,6 +44,14 @@ def test_query_has_no_stray_punctuation():
     assert plan.args["command_query"] == "database backup"
 
 
+def test_parts_of_day_and_twice_a_day():
+    assert translator.plan("each Saturday at 4 in the afternoon run /srv/x.sh").args["schedules"] \
+        == ["0 16 * * 6"]
+    assert translator.plan("run ~/x.sh every morning and evening").args["schedules"] == ["0 9,18 * * *"]
+    assert translator.plan("twice a day run ~/x.sh").kind == "ask"
+    assert translator.plan("twice a day at 9am and 9pm run ~/x.sh").args["schedules"] == ["0 9,21 * * *"]
+
+
 def test_quoted_cron_is_not_mistaken_for_a_command():
     plan = translator.plan('explain "*/5 * * * *"')
     assert plan.tool == "preview_schedule"

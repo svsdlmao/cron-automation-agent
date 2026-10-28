@@ -45,7 +45,7 @@ def test_hybrid_uses_rules_first_and_llm_only_when_they_cannot_read_it():
     hybrid = HybridPlanner(llm=llm, llm_name="fake")
     plain = asyncio.run(hybrid.plan("every day at 9am run ~/bin/x.sh"))
     assert plain.args["schedules"] == ["0 9 * * *"] and llm.provider.prompts == []   # rules only
-    odd = asyncio.run(hybrid.plan("twice a day run ~/bin/x.sh"))
+    odd = asyncio.run(hybrid.plan("run ~/bin/x.sh whenever the clock strikes nine"))
     assert odd.args["schedules"] == ["0 9,21 * * *"] and odd.meta["planned_by"] == "fake"
     assert "Check the preview" in odd.notes[0]
 

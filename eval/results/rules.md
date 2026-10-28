@@ -1,10 +1,10 @@
 # Evaluation: rules
 
-Run 2026-10-22T16:12:12
+Run 2026-10-28T22:32:59
 
 - Fully correct: **59/59 (100%)**
 - Schedule correct on scheduling prompts: 41/41
-- Median planning time: 0.0 s
+- Median planning time: 0.0 s (95th percentile 0.0 s)
 
 | Category | Correct |
 |---|---|

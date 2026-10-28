@@ -1,4 +1,13 @@
 {
+  "recovery": {
+    "invalid_first_answers": 0,
+    "recovered_by_retry": 0,
+    "recovered_by_rules": 0,
+    "correct_after_recovery": 0,
+    "error_kinds": {}
+  },
+  "end_to_end_correct": 59,
+  "p95_latency_s": 0.0,
   "provider": "rules",
   "model": null,
   "cases": 59,
@@ -68,6 +77,9 @@
           "command": "~/scripts/db_backup.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.004,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -87,6 +99,9 @@
           "command_query": "database backup"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -106,6 +121,9 @@
           "command": "~/bin/health_check.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -125,6 +143,9 @@
           "command": "/opt/ping.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -144,6 +165,9 @@
           "command": "curl -fsS https://example.com/health"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -163,6 +187,9 @@
           "command": "~/bin/sync.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -182,6 +209,9 @@
           "command": "~/bin/rotate.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -201,6 +231,9 @@
           "command": "~/bin/rotate.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -220,6 +253,9 @@
           "command": "~/bin/fetch.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -239,6 +275,9 @@
           "command": "~/bin/fetch.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -258,6 +297,9 @@
           "command": "~/scripts/report.py"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -277,6 +319,9 @@
           "command": "~/scripts/report.py"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -296,6 +341,9 @@
           "command": "~/scripts/report.py"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -315,6 +363,9 @@
           "command": "~/scripts/cleanup_tmp.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -334,6 +385,9 @@
           "command": "~/scripts/lunch.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -353,6 +407,9 @@
           "command": "~/bin/check.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -373,6 +430,9 @@
           "command": "~/bin/check.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -392,6 +452,9 @@
           "command": "~/bin/standup.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -411,6 +474,9 @@
           "command": "~/bin/wake.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -430,6 +496,9 @@
           "command": "~/bin/garden.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -449,6 +518,9 @@
           "command": "~/bin/plan.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -468,6 +540,9 @@
           "command": "~/bin/gym.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -487,6 +562,9 @@
           "command": "~/bin/bins.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -506,6 +584,9 @@
           "command": "~/scripts/weekly_report.py"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -525,6 +606,9 @@
           "command": "~/bin/health_check.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -544,6 +628,9 @@
           "command": "~/bin/poll.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -563,6 +650,9 @@
           "command": "~/bin/sync.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -582,6 +672,9 @@
           "command": "~/scripts/invoice.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -601,6 +694,9 @@
           "command": "~/scripts/pay.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -620,6 +716,9 @@
           "command": "~/scripts/rent.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -639,6 +738,9 @@
           "command": "~/scripts/archive.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -658,6 +760,9 @@
           "command": "~/bin/newyear.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.001,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -677,6 +782,9 @@
           "command": "~/bin/tax.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -696,6 +804,9 @@
           "command": "~/bin/quarterly.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -715,6 +826,9 @@
           "command": "tar czf /backups/home-$(date +%F).tgz ~/data"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -734,6 +848,9 @@
           "command_query": "backup database"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -753,6 +870,9 @@
           "command": "~/scripts/close_books.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -772,6 +892,9 @@
           "command": "~/scripts/payroll.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -792,6 +915,9 @@
           "command": "~/bin/sync.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -811,6 +937,9 @@
           "command": "~/scripts/db_backup.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -830,6 +959,9 @@
           "command": "~/bin/poll.sh"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": true,
       "why": ""
@@ -843,6 +975,9 @@
         "tool": null,
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -856,6 +991,9 @@
         "tool": null,
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -869,6 +1007,9 @@
         "tool": null,
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -887,6 +1028,9 @@
           "guard": ""
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -900,6 +1044,9 @@
         "tool": null,
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -913,6 +1060,9 @@
         "tool": null,
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -926,6 +1076,9 @@
         "tool": null,
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -939,6 +1092,9 @@
         "tool": null,
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -952,6 +1108,9 @@
         "tool": null,
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -965,6 +1124,9 @@
         "tool": "list_jobs",
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -978,6 +1140,9 @@
         "tool": "list_jobs",
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -991,6 +1156,9 @@
         "tool": "cron_status",
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -1009,6 +1177,9 @@
           }
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -1029,6 +1200,9 @@
           }
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -1047,6 +1221,9 @@
           }
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -1060,6 +1237,9 @@
         "tool": "rollback",
         "args": {}
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -1075,6 +1255,9 @@
           "schedule": "*/15 9-16 * * 1-5"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
@@ -1090,10 +1273,13 @@
           "schedule": "0 0 * * 5"
         }
       },
+      "meta": {},
+      "end_to_end_ok": true,
+      "latency_s": 0.0,
       "ok": true,
       "schedule_ok": null,
       "why": ""
     }
   ],
-  "date": "2026-10-22T16:12:12"
+  "date": "2026-10-28T22:32:59"
 }
