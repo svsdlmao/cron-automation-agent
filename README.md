@@ -27,7 +27,7 @@ runs your jobs (Windows has no cron). Needs Python 3.10+ and Git for Windows, wh
 **Linux / WSL / macOS:** `./start-agent.sh`. It uses the real `crontab` and cron daemon
 (`sudo service cron start` if it isn't running).
 
-A step-by-step presentation script is in **[docs/DEMO.md](docs/DEMO.md)**.
+**Demo video (2.5 min, silent):** [docs/24BCE0416_Cron_Automation_Agent_Demo.mp4](docs/24BCE0416_Cron_Automation_Agent_Demo.mp4) · A step-by-step presentation script is in **[docs/DEMO.md](docs/DEMO.md)**.
 
 ## How it works
 
